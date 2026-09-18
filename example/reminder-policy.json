@@ -1,0 +1,7 @@
+{
+  "default_local_time": "09:00",
+  "timezone_source": "device",
+  "prefer_user_setting": true,
+  "allow_disable": true,
+  "when_timezone_unknown": "request-setting-without-scheduling"
+}
