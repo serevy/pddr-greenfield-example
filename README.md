@@ -1,24 +1,34 @@
 # PDDR Greenfield Example
 
-新規プロジェクトへ[PDDR Kit v0.1.0](https://github.com/serevy/pddr-kit/releases/tag/v0.1.0)を導入した、最小のリファレンスです。
+新規プロジェクトへ[PDDR Kit v0.1.0](https://github.com/serevy/pddr-kit/releases/tag/v0.1.0)を導入し、その後の継続運用まで示す最小リファレンスです。
 
-このリポジトリで扱う「Pocket Garden」と、その観測・設定・検証結果はすべて架空です。実在するユーザー調査や製品の主張ではありません。
+このリポジトリで扱う「Pocket Garden」と、そのProduct判断に使う観測・設定・検証結果はすべて架空です。実在するユーザー調査や製品の主張ではありません。PDDR Kit自体の導入・保守に関する記録は、この公開リポジトリで実際に確認できるEvidenceを使用します。
 
 ## 何を確認できるか
 
 - 公開済みPDDR Kitから生成された`.pddr/`管理ファイル
 - プロジェクト固有のAI・開発者向けルール
 - Evidenceへ辿れる、完了済みProduct判断の例
+- milestone auditから生まれたProcess判断の例
+- checkpointを実施してもroutine workをPDDRへ昇格しない境界
 - Pull Requestと`main`でPDDRを検証するGitHub Actions
-- IssueとPDDRを使い分ける最小運用
+- Issue / PRとPDDRを使い分ける最小運用
 
 ## 読む順番
 
-1. [`AGENTS.md`](AGENTS.md) — いつPDDRを作り、どう扱うか
-2. [`PDDR-0001`](docs/records/PDDR-0001-local-time-reminders.md) — 判断記録の完成例
-3. [`reminder-discovery.md`](docs/evidence/reminder-discovery.md) — 判断前の観測
-4. [`reminder-policy.json`](example/reminder-policy.json) — 判断を反映した成果物
-5. [`reminder-validation.md`](docs/evidence/reminder-validation.md) — 判断後の検証
+1. [`AGENTS.md`](AGENTS.md) — いつPDDRを作り、節目でどう棚卸しするか
+2. [`PDDR-0001`](docs/records/PDDR-0001-local-time-reminders.md) — 架空Product判断の完成例
+3. [`reminder-discovery.md`](docs/evidence/reminder-discovery.md) — 判断前の架空観測
+4. [`reminder-policy.json`](example/reminder-policy.json) — 判断を反映した架空成果物
+5. [`reminder-validation.md`](docs/evidence/reminder-validation.md) — 判断後の架空検証
+6. [`maintenance-audit-2026-09-22.md`](docs/evidence/maintenance-audit-2026-09-22.md) — 実際のrepository棚卸し
+7. [`PDDR-0002`](docs/records/PDDR-0002-milestone-audit-checkpoints.md) — 棚卸しから昇格したProcess判断
+
+## 継続運用の例
+
+2026-09-22のmaintenance auditでは、導入済み`.pddr/`管理ファイルがPDDR Kit mainと同一であり、Kit自体のupgradeは不要でした。また、Dependabot導入はroutine maintenanceとしてPDDRへ昇格していません。
+
+一方、PDDR Kitのdogfoodingから得られたmilestone audit guidanceは、このサンプルでも将来の記録漏れを防ぐProcess判断として採用し、`AGENTS.md`へcheckpointを接続してPDDR-0002へ記録しています。
 
 ## 検証する
 
@@ -28,8 +38,8 @@ Python 3.10以降で実行します。
 python .pddr/pddr.py validate
 ```
 
-## IssueとPDDRの境界
+## Issue / PRとPDDRの境界
 
-Issueには仮説、作業計画、途中経過、生の検証結果を残します。PDDRには、それらを根拠に採用・不採用・保留した、将来も理由を参照すべき重要な判断だけを残します。
+IssueやPRには仮説、作業計画、途中経過、生の検証結果、routine maintenanceを残します。PDDRには、それらを根拠に採用・不採用・保留した、将来も理由を参照すべき重要な判断だけを残します。
 
 このサンプルはPDDR仕様の正本ではありません。最新の仕様と導入方法は[PDDR Kit](https://github.com/serevy/pddr-kit)を参照してください。
