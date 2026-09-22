@@ -9,6 +9,7 @@
 - 公開済みPDDR Kitから生成された`.pddr/`管理ファイル
 - プロジェクト固有のAI・開発者向けルール
 - Evidenceへ辿れる、完了済みProduct判断の例
+- 実際に触れるPocket GardenのBamboo Plot
 - milestone auditから生まれたProcess判断の例
 - checkpointを実施してもroutine workをPDDRへ昇格しない境界
 - Pull Requestと`main`でPDDRを検証するGitHub Actions
@@ -23,6 +24,8 @@
 5. [`reminder-validation.md`](docs/evidence/reminder-validation.md) — 判断後の架空検証
 6. [`maintenance-audit-2026-09-22.md`](docs/evidence/maintenance-audit-2026-09-22.md) — 実際のrepository棚卸し
 7. [`PDDR-0002`](docs/records/PDDR-0002-milestone-audit-checkpoints.md) — 棚卸しから昇格したProcess判断
+8. [`PDDR-0003`](docs/records/PDDR-0003-executable-bamboo-plot.md) — 実行可能なBamboo Plotを持つProject / Product判断
+9. [`app/`](app/) — 実際に触れる最小の竹の子
 
 ## 継続運用の例
 
@@ -30,9 +33,24 @@
 
 一方、PDDR Kitのdogfoodingから得られたmilestone audit guidanceは、このサンプルでも将来の記録漏れを防ぐProcess判断として採用し、`AGENTS.md`へcheckpointを接続してPDDR-0002へ記録しています。
 
+## Bamboo Plotを触る
+
+Phase 1ではprovider固有のdeployment設定をまだ入れず、静的frontendとして起動できます。
+
+```bash
+python -m http.server 8000 -d app
+```
+
+ブラウザで `http://localhost:8000` を開くと、竹の子へ水をやって少し育てられます。状態はこのPhaseではbrowser local storageにだけ保存します。
+
+- [Issue #7](https://github.com/serevy/pddr-greenfield-example/issues/7) — 最初のscopeとdeferred decisions
+- [PDDR-0003](docs/records/PDDR-0003-executable-bamboo-plot.md) — なぜ実行可能な竹サンプルを持つか
+
+serverless hosting providerやdurable persistenceは、Bamboo Plotを触った後のEvidenceを使って次の判断として扱います。
+
 ## 検証する
 
-Python 3.10以降で実行します。
+Python 3.10以降でPDDRを検証します。
 
 ```bash
 python .pddr/pddr.py validate
