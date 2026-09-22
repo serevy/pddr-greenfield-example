@@ -13,6 +13,7 @@ owners:
 evidence:
   - "Maintainer approved evolving the sample into a small bamboo-growing serverless web app while keeping PDDR as the main subject, 2026-09-23 (private)"
   - "https://github.com/serevy/pddr-greenfield-example/issues/7"
+  - "https://github.com/serevy/pddr-greenfield-example/pull/8"
 related:
   - PDDR-0001
 supersedes: []
@@ -93,6 +94,7 @@ Issue #7でPhase 1のacceptance criteriaとdeferred decisionsを整理し、Bamb
 
 - Maintainer approval to evolve the sample into a small bamboo-growing serverless web app while keeping PDDR as the main subject, 2026-09-23 (private).
 - [Issue #7: Pocket Garden Bamboo Plot Phase 1](https://github.com/serevy/pddr-greenfield-example/issues/7)
+- [Implementation PR #8](https://github.com/serevy/pddr-greenfield-example/pull/8)
 
 ## Related records
 
