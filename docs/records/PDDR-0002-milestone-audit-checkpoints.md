@@ -14,6 +14,7 @@ evidence:
   - docs/evidence/maintenance-audit-2026-09-22.md
   - "https://github.com/serevy/pddr-kit/pull/29"
   - "https://github.com/serevy/pddr-kit/blob/main/docs/records/PDDR-0008-milestone-audits.md"
+  - "https://github.com/serevy/pddr-greenfield-example/pull/5"
 related: []
 supersedes: []
 superseded_by: null
@@ -96,6 +97,7 @@ PRがmainへmergeされ、`python .pddr/pddr.py validate`がmain上で成功す�
 - [Maintenance audit 2026-09-22](../evidence/maintenance-audit-2026-09-22.md)
 - [PDDR Kit PR #29](https://github.com/serevy/pddr-kit/pull/29)
 - [PDDR Kit PDDR-0008](https://github.com/serevy/pddr-kit/blob/main/docs/records/PDDR-0008-milestone-audits.md)
+- [Implementation PR #5](https://github.com/serevy/pddr-greenfield-example/pull/5)
 
 ## Related records
 
