@@ -10,6 +10,18 @@
 
 日々の作業、仮説、実験途中の結果、単純な実装詳細はIssueへ残し、それだけを理由にPDDRを作成しません。
 
+## PDDR checkpoints
+
+次のような節目では、最近のIssue、PR、既存PDDR、検証Evidenceを通常のPDDR thresholdで再点検します。
+
+- 大きな実験・リリース・開発フェーズの境界
+- Issueまたはroadmapの棚卸し
+- Evidenceを持つ複数Issue / PRをまとめてclose・統合するタイミング
+
+棚卸し対象はcheckpointに関係する最近の作業へ限定します。同じ判断が既存PDDRにある場合は更新を優先し、将来も理由を参照すべきProject / Product / Process判断だけを新規PDDRへ昇格します。
+
+checkpointを実施したこと自体はPDDR作成理由にしません。通常実装、途中観測、依存更新、実験完了だけなら追加記録なしを正常な結果とします。
+
 ## 記録時のルール
 
 - `.pddr/template.md`から`docs/records/PDDR-NNNN-short-title.md`を作成する
