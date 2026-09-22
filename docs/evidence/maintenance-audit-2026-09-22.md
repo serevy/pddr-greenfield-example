@@ -28,6 +28,11 @@ PR #2はGitHub ActionsをDependabotで監視するための設定追加です。
 
 - https://github.com/serevy/pddr-greenfield-example/pull/2
 
+PR #2のmerge後、Dependabotはmajor update候補としてPR #3（`actions/checkout` v4 → v7）とPR #4（`actions/setup-python` v5 → v7）を作成しました。これらは現時点ではdependency updateのレビュー案件であり、採否や新しいProcess方針は確定していません。そのため、新規PDDRではなくPR上で評価を継続します。
+
+- https://github.com/serevy/pddr-greenfield-example/pull/3
+- https://github.com/serevy/pddr-greenfield-example/pull/4
+
 ### Milestone audit guidance
 
 PDDR Kitではdogfoodingの結果、個々の作業中のopportunistic captureだけでなく、major phase boundary、Issue / roadmap audit、複数Evidence-bearing Issue / PRの統合時にrecent workを再点検するmilestone auditが標準guidanceへ追加されました。
@@ -41,6 +46,8 @@ PDDR Kitの`init` / `upgrade`は導入先の`AGENTS.md`を自動変更しない�
 
 今回のcheckpointでは、routine maintenanceであるDependabot導入はPDDRへ昇格しませんでした。
 
-一方、今後のPDDR取りこぼしを節目で再点検するcheckpointをこのサンプル自身の運用へ接続することは、将来のmaintainer / agentが理由を知るべきdurableなProcess判断と評価しました。この判断をPDDR-0002へ記録します。
+一方、今後のPDDR取りこぼしを節目で再点検するcheckpointをこのサンプル自身の運用へ接続することは、将来のmaintainer / agentが理由を知るべきdurableなProcess判断と評価しました。この判断をPDDR-0002へ記録し、実装PR #5でproject-specific ruleへ反映します。
+
+- https://github.com/serevy/pddr-greenfield-example/pull/5
 
 したがって、今回のaudit結果は「すべてを記録する」ではなく、routine workを除外し、1件のProcess判断だけを昇格した例です。
