@@ -4,7 +4,7 @@ title: Review recent work at milestone checkpoints
 decision_date: 2026-09-22
 recorded_date: 2026-09-22
 decision_status: accepted
-delivery_status: in-progress
+delivery_status: validated
 scope:
   - process
 owners:
@@ -15,6 +15,7 @@ evidence:
   - "https://github.com/serevy/pddr-kit/pull/29"
   - "https://github.com/serevy/pddr-kit/blob/main/docs/records/PDDR-0008-milestone-audits.md"
   - "https://github.com/serevy/pddr-greenfield-example/pull/5"
+  - "https://github.com/serevy/pddr-greenfield-example/actions/runs/35742204181"
 related: []
 supersedes: []
 superseded_by: null
@@ -72,9 +73,9 @@ checkpointはPDDR作成quotaではない。durableなProject / Product / Process
 
 ## Delivery and validation
 
-本判断を反映する`AGENTS.md`、README、maintenance audit Evidence、PDDR-0002を同一PRで更新中である。
+本判断を反映する`AGENTS.md`、README、maintenance audit Evidence、PDDR-0002をPR #5で更新し、2026-09-22にmainへmergeした。
 
-PRがmainへmergeされ、`python .pddr/pddr.py validate`がmain上で成功するまでは、project-specific checkpointの提供状態を`in-progress`とする。merge後のEvidenceを確認したうえで`validated`へ更新する。
+merge commit `b90c478a83fced844fb43f4da7789f0545f0b1d3` を対象にmain上の`Validate PDDR` workflowが成功し、2件のPDDRが検証を通過した。project-specific checkpointの実装とrepository-level validationが完了したため、`delivery_status`を`validated`とする。
 
 ## Consequences
 
@@ -98,6 +99,7 @@ PRがmainへmergeされ、`python .pddr/pddr.py validate`がmain上で成功す�
 - [PDDR Kit PR #29](https://github.com/serevy/pddr-kit/pull/29)
 - [PDDR Kit PDDR-0008](https://github.com/serevy/pddr-kit/blob/main/docs/records/PDDR-0008-milestone-audits.md)
 - [Implementation PR #5](https://github.com/serevy/pddr-greenfield-example/pull/5)
+- [main validation after PR #5](https://github.com/serevy/pddr-greenfield-example/actions/runs/35742204181)
 
 ## Related records
 
