@@ -4,7 +4,7 @@ title: Use a tiny Bamboo Plot as the executable product sample
 decision_date: 2026-09-23
 recorded_date: 2026-09-23
 decision_status: accepted
-delivery_status: in-progress
+delivery_status: validated
 scope:
   - project
   - product
@@ -14,6 +14,8 @@ evidence:
   - "Maintainer approved evolving the sample into a small bamboo-growing serverless web app while keeping PDDR as the main subject, 2026-09-23 (private)"
   - "https://github.com/serevy/pddr-greenfield-example/issues/7"
   - "https://github.com/serevy/pddr-greenfield-example/pull/8"
+  - docs/evidence/bamboo-phase1-validation.md
+  - "https://github.com/serevy/pddr-greenfield-example/actions/runs/35765089863"
 related:
   - PDDR-0001
 supersedes: []
@@ -70,9 +72,11 @@ PDDR Greenfield Exampleを、ドキュメントだけのサンプルから、Poc
 
 ## Delivery and validation
 
-Issue #7でPhase 1のacceptance criteriaとdeferred decisionsを整理し、Bamboo Plotの初回実装を進める。
+Issue #7でPhase 1のacceptance criteriaとdeferred decisionsを整理し、PR #8でBamboo Plotの初回実装を行った。PR #8は2026-09-23にmainへmergeされた。
 
-初回実装PRがmainへmergeされ、静的frontendが読み込めること、local storageによる状態保持、水やり・resetの基本動作、PDDR validationを確認するまでは、`delivery_status`を`in-progress`とする。
+merge commit `7ec5d92d572d658181869bff646c117cd04837c9` を対象としたmain上の`Validate PDDR` workflowが成功した。さらに、static HTTP配信、JavaScript syntax、水やり3回のstate transition、local storageからのstate復元、resetをPhase 1 validationで確認した。
+
+これにより、PDDR-0003で定義したPhase 1の実行可能Bamboo Plotが実装・検証済みとなったため、`delivery_status`を`validated`とする。
 
 ## Consequences
 
@@ -95,6 +99,8 @@ Issue #7でPhase 1のacceptance criteriaとdeferred decisionsを整理し、Bamb
 - Maintainer approval to evolve the sample into a small bamboo-growing serverless web app while keeping PDDR as the main subject, 2026-09-23 (private).
 - [Issue #7: Pocket Garden Bamboo Plot Phase 1](https://github.com/serevy/pddr-greenfield-example/issues/7)
 - [Implementation PR #8](https://github.com/serevy/pddr-greenfield-example/pull/8)
+- [Bamboo Plot Phase 1 validation](../evidence/bamboo-phase1-validation.md)
+- [main validation after PR #8](https://github.com/serevy/pddr-greenfield-example/actions/runs/35765089863)
 
 ## Related records
 
