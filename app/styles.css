@@ -71,14 +71,16 @@ h1 {
 }
 
 .garden-ground {
-  display: grid;
-  place-items: end center;
+  position: relative;
   height: 10rem;
   background: linear-gradient(to bottom, #8ec46f 0 42%, #71573a 42% 100%);
 }
 
 .bamboo-visual {
-  transform: translateY(0.5rem);
+  position: absolute;
+  left: 50%;
+  bottom: 58%;
+  transform: translate(-50%, 0.45rem);
   font-size: 5.5rem;
   line-height: 1;
   filter: drop-shadow(0 0.35rem 0.15rem rgba(34, 54, 35, 0.16));
