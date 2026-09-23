@@ -4,7 +4,7 @@ title: Host the public Bamboo Plot on Cloudflare Workers
 decision_date: 2026-09-23
 recorded_date: 2026-09-23
 decision_status: accepted
-delivery_status: in-progress
+delivery_status: validated
 scope:
   - project
   - product
@@ -16,6 +16,9 @@ evidence:
   - "https://github.com/serevy/pddr-greenfield-example/issues/10"
   - "Maintainer approved Cloudflare Workers for Bamboo Plot hosting, 2026-09-23 (private)"
   - "https://github.com/serevy/pddr-greenfield-example/pull/11"
+  - docs/evidence/workers-deployment-2026-09-23.md
+  - "Maintainer reported the initial Cloudflare Workers deployment completed successfully, 2026-09-23 (private)"
+  - "Maintainer confirmed https://pddr-greenfield-example.serevy.workers.dev/ is publicly reachable without a Zero Trust / Access authentication challenge, 2026-09-23 (private)"
 related:
   - PDDR-0003
 supersedes: []
@@ -74,9 +77,13 @@ maintainerは、API周りを過度に複雑化せずに将来の拡張余地を�
 
 `wrangler.jsonc`で`app/`をWorkers Static Assetsとして配信する最小configurationを追加した。
 
-repository側のprovider-specific configurationは実装中だが、Cloudflare account側のGitHub repository connectionと初回deployment、public URL上でのPhase 1動作確認はまだ完了していない。そのため`delivery_status`は`in-progress`とする。
+repository側のprovider-specific configurationはmainへmerge済みで、maintainerからCloudflare Workersへの初回deployment完了と `https://pddr-greenfield-example.serevy.workers.dev/` の公開到達性が確認された。Zero Trust / Accessの認証challengeなしで通常アクセスできることも確認済みである。さらにmaintainer提供のmobile browser screenshotで、公開endpoint上にPocket Garden UIが正常表示されることを確認した。browser chromeではhostname左側が省略表示されるため、画面上の短縮表示を別hostnameとして扱わない。
 
-public deployment後に、公開URL、deployment結果、Bamboo Plotの基本操作確認をEvidenceとして還流し、検証条件を満たした時点で`validated`へ更新する。
+Workersへ配信しているのはPhase 1で検証済みのstatic `app/` artifactであり、水やり、browser-local stateの復元、resetは `docs/evidence/bamboo-phase1-validation.md` で検証済みである。
+
+assistant実行環境からは `workers.dev` hostへの外向きアクセス制限によりremote browser checkを独立実施できなかったため、その点はEvidenceに明記した。公開到達性はmaintainer確認、client-side挙動は同一static artifactの既存validationを根拠とする。
+
+以上から、採用したhostingが実装・deploy・公開され、対象artifactのPhase 1動作も検証済みであるため、`delivery_status`を`validated`とする。
 
 ## Consequences
 
@@ -98,6 +105,10 @@ public deployment後に、公開URL、deployment結果、Bamboo Plotの基本操
 - [Issue #10: Phase 2 hosting selection](https://github.com/serevy/pddr-greenfield-example/issues/10)
 - Maintainer approval of Cloudflare Workers, 2026-09-23 (private).
 - [Implementation PR #11](https://github.com/serevy/pddr-greenfield-example/pull/11)
+- [Workers deployment evidence](../evidence/workers-deployment-2026-09-23.md)
+- Maintainer report that the initial Cloudflare Workers deployment completed successfully, 2026-09-23 (private).
+- [main PDDR validation after PR #11](https://github.com/serevy/pddr-greenfield-example/actions/runs/35815995475)
+- Maintainer confirmation that https://pddr-greenfield-example.serevy.workers.dev/ is publicly reachable, 2026-09-23 (private).
 
 ## Related records
 
