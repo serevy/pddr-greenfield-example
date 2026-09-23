@@ -71,15 +71,21 @@ h1 {
 }
 
 .garden-ground {
+  --grass-height: 32%;
+
   position: relative;
   height: 10rem;
-  background: linear-gradient(to bottom, #8ec46f 0 42%, #71573a 42% 100%);
+  background: linear-gradient(
+    to bottom,
+    #8ec46f 0 var(--grass-height),
+    #71573a var(--grass-height) 100%
+  );
 }
 
 .bamboo-visual {
   position: absolute;
   left: 50%;
-  bottom: 58%;
+  bottom: calc(100% - var(--grass-height));
   transform: translate(-50%, 0);
   font-size: 5.5rem;
   line-height: 1;
