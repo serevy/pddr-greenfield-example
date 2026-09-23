@@ -1,10 +1,10 @@
 ---
 id: PDDR-0004
 title: Host the public Bamboo Plot on Cloudflare Workers
-decision_date: unknown
+decision_date: 2026-09-23
 recorded_date: 2026-09-23
-decision_status: proposed
-delivery_status: not-started
+decision_status: accepted
+delivery_status: in-progress
 scope:
   - project
   - product
@@ -14,6 +14,8 @@ owners:
 evidence:
   - docs/evidence/hosting-options-2026-09-23.md
   - "https://github.com/serevy/pddr-greenfield-example/issues/10"
+  - "Maintainer approved Cloudflare Workers for Bamboo Plot hosting, 2026-09-23 (private)"
+  - "https://github.com/serevy/pddr-greenfield-example/pull/11"
 related:
   - PDDR-0003
 supersedes: []
@@ -24,9 +26,9 @@ superseded_by: null
 
 ## Summary
 
-Bamboo Plotの公開hostingとして、Cloudflare Workers + Static Assetsを採用する案を提案する。
+Bamboo Plotの公開hostingとして、Cloudflare Workers + Static Assetsを採用する。
 
-現時点ではmaintainer approvalが未確認のため、この記録は`decision_status: proposed`であり、provider固有のdeployment設定はまだmainへ導入しない。
+maintainerは、API周りを過度に複雑化せずに将来の拡張余地を残せる点を重視し、2026-09-23にWorkers採用を承認した。
 
 ## Context and observations
 
@@ -45,23 +47,21 @@ Bamboo Plotの公開hostingとして、Cloudflare Workers + Static Assetsを採�
 
 - Benefits: static-onlyな現在には最小構成。repositoryから直接公開しやすい。
 - Costs / constraints: 将来server-side stateやAPIが必要になると、別runtimeやproviderを追加する必要がある。
-- Status: considered
+- Status: rejected
 
 ### Cloudflare Pages
 
 - Benefits: static hosting、Git integration、preview deploymentが揃う。
 - Costs / constraints: Cloudflare自身が新規applicationではWorkersをprimary platformとして推奨しており、将来のWorker logicまで考えると中間レイヤーになりやすい。
-- Status: considered
+- Status: rejected
 
 ### Cloudflare Workers + Static Assets
 
 - Benefits: 現在のstatic assetsを配信でき、将来APIやdurable stateへ同じapplication内で進める。GitHub連携とpreviewも利用できる。
 - Costs / constraints: static-onlyな現在には設定が少し増え、Cloudflare account側のGit integrationが必要。
-- Status: proposed
+- Status: accepted
 
 ## Decision
-
-提案:
 
 - Phase 2のpublic hostingとしてCloudflare Workers + Static Assetsを採用する。
 - initial deploymentではstatic assetsだけを配信し、Worker APIは追加しない。
@@ -70,13 +70,13 @@ Bamboo Plotの公開hostingとして、Cloudflare Workers + Static Assetsを採�
 - deployment EvidenceをPDDRへ還流してから`delivery_status`を更新する。
 - D1 / KV / Durable Objects、identity、reminder API、custom domain、analyticsはこの判断に含めない。
 
-このDecisionはmaintainer approval前のproposalである。approvalが確認できるまでは`accepted`へ変更しない。
-
 ## Delivery and validation
 
-未着手。
+`wrangler.jsonc`で`app/`をWorkers Static Assetsとして配信する最小configurationを追加した。
 
-maintainer approval後にprovider-specific configurationを実装し、public URL上でstatic frontendとPhase 1動作を確認する。
+repository側のprovider-specific configurationは実装中だが、Cloudflare account側のGitHub repository connectionと初回deployment、public URL上でのPhase 1動作確認はまだ完了していない。そのため`delivery_status`は`in-progress`とする。
+
+public deployment後に、公開URL、deployment結果、Bamboo Plotの基本操作確認をEvidenceとして還流し、検証条件を満たした時点で`validated`へ更新する。
 
 ## Consequences
 
@@ -96,6 +96,8 @@ maintainer approval後にprovider-specific configurationを実装し、public UR
 
 - [Hosting options 2026-09-23](../evidence/hosting-options-2026-09-23.md)
 - [Issue #10: Phase 2 hosting selection](https://github.com/serevy/pddr-greenfield-example/issues/10)
+- Maintainer approval of Cloudflare Workers, 2026-09-23 (private).
+- [Implementation PR #11](https://github.com/serevy/pddr-greenfield-example/pull/11)
 
 ## Related records
 
