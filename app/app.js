@@ -21,9 +21,9 @@ const stages = [
   },
   {
     name: "元気な竹",
-    visual: ["🎋", "🎋"],
-    aria: "元気に育った竹",
-    message: "Phase 1ではここまで。竹林化はスコープ外です。"
+    visual: ["🎋", "🌱"],
+    aria: "元気に育った竹と新しく顔を出した竹の子",
+    message: "竹のそばに新しい竹の子が顔を出しました。Phase 1ではここまで。竹林化はスコープ外です。"
   }
 ];
 
@@ -71,7 +71,11 @@ function render(state) {
   bambooVisual.setAttribute("aria-label", stage.aria);
   bambooVisual.replaceChildren(...stage.visual.map((glyph) => {
     const span = document.createElement("span");
-    span.className = glyph === "💧" ? "watering-drop" : "bamboo-glyph";
+    span.className = glyph === "💧"
+      ? "watering-drop"
+      : glyph === "🌱"
+        ? "sprout-glyph"
+        : "bamboo-glyph";
     span.textContent = glyph;
     span.setAttribute("aria-hidden", "true");
     return span;

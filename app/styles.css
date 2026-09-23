@@ -113,6 +113,11 @@ h1 {
   transform: translateY(-0.25em);
 }
 
+.bamboo-visual[data-stage="3"] .sprout-glyph {
+  margin-left: -0.08em;
+  font-size: 0.62em;
+}
+
 .garden-content {
   padding: 1.5rem;
 }
