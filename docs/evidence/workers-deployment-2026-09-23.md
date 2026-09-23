@@ -6,9 +6,10 @@ PDDR-0004で採用したCloudflare Workers + Static Assetsについて、初回d
 
 - maintainer reported that the Cloudflare Workers deployment completed successfully on 2026-09-23.
 - maintainer enabled the public `workers.dev` route using account subdomain `serevy`.
-- public endpoint: https://pddr-greenfield-example.serevy.workers.dev/
+- public endpoint: https://example.serevy.workers.dev/
 - maintainer confirmed the Worker is publicly reachable on 2026-09-23.
 - maintainer confirmed it opens normally without a Zero Trust / Access authentication challenge.
+- maintainer provided a mobile browser screenshot showing the Pocket Garden UI rendered successfully at the public endpoint on 2026-09-23.
 - repository-side Workers configuration is present on main:
   - `wrangler.jsonc`
   - static asset directory: `./app`
