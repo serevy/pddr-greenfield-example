@@ -3,25 +3,25 @@ const STORAGE_KEY = "pddr-pocket-garden:bamboo-plot:v1";
 const stages = [
   {
     name: "竹の子",
-    visual: "🌱",
+    visual: ["🌱"],
     aria: "植えたばかりの竹の子",
     message: "竹の子を植えました。まずは水をあげてみましょう。"
   },
   {
     name: "水をもらった竹の子",
-    visual: "🌱💧",
+    visual: ["🌱", "💧"],
     aria: "水をもらった竹の子",
     message: "土がしっとりしました。竹の子はまだ小さいままです。"
   },
   {
     name: "若竹",
-    visual: "🎋",
+    visual: ["🎋"],
     aria: "少し育った若竹",
     message: "少し伸びました。ここから先をどう育てるかは、次の判断です。"
   },
   {
     name: "元気な竹",
-    visual: "🎋🎋",
+    visual: ["🎋", "🎋"],
     aria: "元気に育った竹",
     message: "Phase 1ではここまで。竹林化はスコープ外です。"
   }
@@ -66,8 +66,16 @@ function render(state) {
   const stage = stages[stageIndex];
 
   document.querySelector("#garden-title").textContent = stage.name;
-  document.querySelector("#bamboo-visual").textContent = stage.visual;
-  document.querySelector("#bamboo-visual").setAttribute("aria-label", stage.aria);
+  const bambooVisual = document.querySelector("#bamboo-visual");
+  bambooVisual.dataset.stage = String(stageIndex);
+  bambooVisual.setAttribute("aria-label", stage.aria);
+  bambooVisual.replaceChildren(...stage.visual.map((glyph) => {
+    const span = document.createElement("span");
+    span.className = glyph === "💧" ? "watering-drop" : "bamboo-glyph";
+    span.textContent = glyph;
+    span.setAttribute("aria-hidden", "true");
+    return span;
+  }));
   document.querySelector("#garden-message").textContent = stage.message;
   document.querySelector("#water-count").textContent = String(state.waterCount);
 

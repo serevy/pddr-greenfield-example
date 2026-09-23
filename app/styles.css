@@ -71,7 +71,7 @@ h1 {
 }
 
 .garden-ground {
-  --grass-height: 32%;
+  --grass-height: 28%;
 
   position: relative;
   height: 10rem;
@@ -86,10 +86,31 @@ h1 {
   position: absolute;
   left: 50%;
   bottom: calc(100% - var(--grass-height));
-  transform: translate(-50%, 0);
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  gap: 0.02em;
+  transform: translateX(-50%);
   font-size: 5.5rem;
   line-height: 1;
   filter: drop-shadow(0 0.35rem 0.15rem rgba(34, 54, 35, 0.16));
+}
+
+.bamboo-visual[data-stage="0"],
+.bamboo-visual[data-stage="1"] {
+  font-size: 4.25rem;
+}
+
+.bamboo-visual[data-stage="2"],
+.bamboo-visual[data-stage="3"] {
+  font-size: 5.5rem;
+}
+
+.watering-drop {
+  align-self: flex-start;
+  margin-left: -0.12em;
+  font-size: 0.58em;
+  transform: translateY(-0.25em);
 }
 
 .garden-content {
