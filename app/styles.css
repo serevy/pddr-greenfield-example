@@ -80,7 +80,7 @@ h1 {
   position: absolute;
   left: 50%;
   bottom: 58%;
-  transform: translate(-50%, 0.45rem);
+  transform: translate(-50%, 0);
   font-size: 5.5rem;
   line-height: 1;
   filter: drop-shadow(0 0.35rem 0.15rem rgba(34, 54, 35, 0.16));
