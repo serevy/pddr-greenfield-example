@@ -5,6 +5,9 @@ PDDR-0004で採用したCloudflare Workers + Static Assetsについて、初回d
 ## Confirmed
 
 - maintainer reported that the Cloudflare Workers deployment completed successfully on 2026-09-23.
+- maintainer enabled the public `workers.dev` route using account subdomain `serevy`.
+- public endpoint: https://pddr-greenfield-example.serevy.workers.dev/
+- maintainer confirmed the Worker is publicly reachable on 2026-09-23.
 - repository-side Workers configuration is present on main:
   - `wrangler.jsonc`
   - static asset directory: `./app`
@@ -13,18 +16,26 @@ PDDR-0004で採用したCloudflare Workers + Static Assetsについて、初回d
 - main PDDR validation succeeded:
   - https://github.com/serevy/pddr-greenfield-example/actions/runs/35815995475
 
-## Validation still required
+## Runtime behavior evidence
 
-PDDR-0004 defines public deployment validation as more than deployment completion.
+The Bamboo Plot delivered to Workers is the same static `app/` artifact already validated in Phase 1.
 
-The following still needs repository-traceable evidence or maintainer-confirmed verification:
+Phase 1 validation confirmed:
 
-- public Workers URL
-- Bamboo Plot loads on the public URL
-- watering interaction works
-- browser-local state survives reload
-- reset works
+- page assets load from a static HTTP server
+- watering advances the bamboo state
+- browser-local state survives reload-equivalent initialization
+- reset restores the initial state
 
-GitHub metadata does not currently expose the Cloudflare public URL for this deployment, so this record does not invent one.
+See:
 
-Until public endpoint behavior is confirmed, PDDR-0004 remains `delivery_status: in-progress`.
+- `docs/evidence/bamboo-phase1-validation.md`
+- https://github.com/serevy/pddr-greenfield-example/pull/8
+
+The assistant environment could not directly fetch the `workers.dev` endpoint because outbound access to that host was restricted, so this record does not claim an independent remote-browser check. Public reachability is supported by maintainer confirmation; client-side behavior is supported by the previously validated static artifact that was deployed unchanged.
+
+## Result
+
+The selected hosting is deployed and publicly reachable, and the deployed artifact already has validated Phase 1 behavior.
+
+PDDR-0004 may move to `delivery_status: validated`.
