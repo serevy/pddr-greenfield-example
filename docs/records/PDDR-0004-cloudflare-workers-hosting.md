@@ -16,6 +16,8 @@ evidence:
   - "https://github.com/serevy/pddr-greenfield-example/issues/10"
   - "Maintainer approved Cloudflare Workers for Bamboo Plot hosting, 2026-09-23 (private)"
   - "https://github.com/serevy/pddr-greenfield-example/pull/11"
+  - docs/evidence/workers-deployment-2026-09-23.md
+  - "Maintainer reported the initial Cloudflare Workers deployment completed successfully, 2026-09-23 (private)"
 related:
   - PDDR-0003
 supersedes: []
@@ -74,9 +76,11 @@ maintainerは、API周りを過度に複雑化せずに将来の拡張余地を�
 
 `wrangler.jsonc`で`app/`をWorkers Static Assetsとして配信する最小configurationを追加した。
 
-repository側のprovider-specific configurationは実装中だが、Cloudflare account側のGitHub repository connectionと初回deployment、public URL上でのPhase 1動作確認はまだ完了していない。そのため`delivery_status`は`in-progress`とする。
+repository側のprovider-specific configurationはmainへmerge済みで、maintainerからCloudflare Workersへの初回deployment完了が報告された。
 
-public deployment後に、公開URL、deployment結果、Bamboo Plotの基本操作確認をEvidenceとして還流し、検証条件を満たした時点で`validated`へ更新する。
+一方、GitHub側のmetadataからはCloudflareのpublic URLを取得できず、この記録ではURLを推測しない。PDDR-0004で定めた公開endpoint上のPhase 1動作確認（表示、水やり、reload後のstate保持、reset）はまだrepository-traceableなEvidenceとして完了していない。
+
+そのため現時点では`delivery_status`を`in-progress`のまま維持する。public URLと基本操作の確認が取れた時点で`validated`へ更新する。
 
 ## Consequences
 
@@ -98,6 +102,9 @@ public deployment後に、公開URL、deployment結果、Bamboo Plotの基本操
 - [Issue #10: Phase 2 hosting selection](https://github.com/serevy/pddr-greenfield-example/issues/10)
 - Maintainer approval of Cloudflare Workers, 2026-09-23 (private).
 - [Implementation PR #11](https://github.com/serevy/pddr-greenfield-example/pull/11)
+- [Workers deployment evidence](../evidence/workers-deployment-2026-09-23.md)
+- Maintainer report that the initial Cloudflare Workers deployment completed successfully, 2026-09-23 (private).
+- [main PDDR validation after PR #11](https://github.com/serevy/pddr-greenfield-example/actions/runs/35815995475)
 
 ## Related records
 
