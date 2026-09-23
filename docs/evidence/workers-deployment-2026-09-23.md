@@ -41,3 +41,19 @@ The assistant environment could not directly fetch the `workers.dev` endpoint be
 The selected hosting is deployed and publicly reachable, and the deployed artifact already has validated Phase 1 behavior.
 
 PDDR-0004 may move to `delivery_status: validated`.
+
+
+## Live browser end-to-end confirmation
+
+After the public `workers.dev` route was enabled, the maintainer performed the Phase 1 interaction flow against the live endpoint:
+
+- opened `https://pddr-greenfield-example.serevy.workers.dev/`
+- watered the bamboo and observed the growth state change
+- reloaded the page and confirmed the browser-local state was preserved
+- used reset / replant and confirmed the state returned to the initial state
+
+The maintainer reported all checks passed on 2026-09-23.
+
+A Work Cloud Browser session also successfully rendered the public Pocket Garden and interacted with the watering flow, providing an additional browser-based confirmation that the public deployment executes the client-side application rather than only serving static markup.
+
+This closes the remaining public-endpoint validation gap that was previously covered only by local artifact validation.

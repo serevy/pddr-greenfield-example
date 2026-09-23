@@ -19,6 +19,8 @@ evidence:
   - docs/evidence/workers-deployment-2026-09-23.md
   - "Maintainer reported the initial Cloudflare Workers deployment completed successfully, 2026-09-23 (private)"
   - "Maintainer confirmed https://pddr-greenfield-example.serevy.workers.dev/ is publicly reachable without a Zero Trust / Access authentication challenge, 2026-09-23 (private)"
+  - "Maintainer confirmed live watering, reload persistence, and reset / replant all passed on the public endpoint, 2026-09-23 (private)"
+  - "Work Cloud Browser rendered the public Pocket Garden and exercised the watering interaction, 2026-09-23 (private)"
 related:
   - PDDR-0003
 supersedes: []
@@ -81,9 +83,9 @@ repository側のprovider-specific configurationはmainへmerge済みで、mainta
 
 Workersへ配信しているのはPhase 1で検証済みのstatic `app/` artifactであり、水やり、browser-local stateの復元、resetは `docs/evidence/bamboo-phase1-validation.md` で検証済みである。
 
-assistant実行環境からは `workers.dev` hostへの外向きアクセス制限によりremote browser checkを独立実施できなかったため、その点はEvidenceに明記した。公開到達性はmaintainer確認、client-side挙動は同一static artifactの既存validationを根拠とする。
+assistantの通常Web取得経路からは `workers.dev` hostへの外向きアクセス制限によりremote fetchを独立実施できなかったため、その点はEvidenceに明記した。一方、maintainerによる実ブラウザ確認では、公開endpoint上で水やり、reload後のbrowser-local state保持、reset / replantまで成功した。さらにWork Cloud Browserでも公開Pocket Gardenの表示と水やりinteractionを確認した。
 
-以上から、採用したhostingが実装・deploy・公開され、対象artifactのPhase 1動作も検証済みであるため、`delivery_status`を`validated`とする。
+以上から、採用したhostingが実装・deploy・公開され、公開endpoint上でもPhase 1のend-to-end interactionが確認済みであるため、`delivery_status`を`validated`とする。
 
 ## Consequences
 
