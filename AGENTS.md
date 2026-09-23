@@ -22,6 +22,13 @@
 
 checkpointを実施したこと自体はPDDR作成理由にしません。通常実装、途中観測、依存更新、実験完了だけなら追加記録なしを正常な結果とします。
 
+
+### Pending checkpoint marker
+
+PR本文に `## PDDR checkpoint` と `Review: pending` がある場合は、PDDRが必要だと決めつけず、そのsignalに関係する最近のIssue / PR / Evidenceだけを対象にbounded auditします。
+
+durableなProject / Product / Process判断が見つからなければno-opを正常結果とし、review後はPR本文のcurrent stateを `Review: completed` へ更新します。過去のCheck / Job Summaryはsignal発生時点の履歴として扱い、同期更新しません。
+
 ## 記録時のルール
 
 - `.pddr/template.md`から`docs/records/PDDR-NNNN-short-title.md`を作成する
