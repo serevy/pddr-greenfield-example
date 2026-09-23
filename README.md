@@ -26,6 +26,8 @@
 7. [`PDDR-0002`](docs/records/PDDR-0002-milestone-audit-checkpoints.md) — 棚卸しから昇格したProcess判断
 8. [`PDDR-0003`](docs/records/PDDR-0003-executable-bamboo-plot.md) — 実行可能なBamboo Plotを持つProject / Product判断
 9. [`app/`](app/) — 実際に触れる最小の竹の子
+10. [`PDDR-0004`](docs/records/PDDR-0004-cloudflare-workers-hosting.md) — 公開hostingをCloudflare Workersへ決めた判断
+11. [`wrangler.jsonc`](wrangler.jsonc) — Static Assetsだけを配信する最小Workers設定
 
 ## 継続運用の例
 
@@ -46,7 +48,23 @@ python -m http.server 8000 -d app
 - [Issue #7](https://github.com/serevy/pddr-greenfield-example/issues/7) — 最初のscopeとdeferred decisions
 - [PDDR-0003](docs/records/PDDR-0003-executable-bamboo-plot.md) — なぜ実行可能な竹サンプルを持つか
 
-serverless hosting providerやdurable persistenceは、Bamboo Plotを触った後のEvidenceを使って次の判断として扱います。
+Phase 2ではpublic hostingとしてCloudflare Workers + Static Assetsを採用しました。D1 / KV / Durable Objectsなどのdurable persistenceは、まだ次の判断として保留しています。
+
+### Workersでpreviewする
+
+Cloudflare accountへlogin済みの環境では、repository rootから次を実行できます。
+
+```bash
+npx wrangler@latest dev
+```
+
+`wrangler.jsonc`は`app/`だけをStatic Assetsとして配信します。Worker API codeはまだありません。
+
+### Public deployment
+
+Cloudflare Workers BuildsのGitHub integrationを使う場合は、Cloudflare Dashboardの **Workers & Pages → Create application → Import a repository** からこのrepositoryを接続します。
+
+repository側の設定は用意済みですが、Cloudflare account側の接続と初回deploymentは別途必要です。公開URLでの検証が完了するまでは、PDDR-0004の`delivery_status`は`in-progress`です。
 
 ## 検証する
 
