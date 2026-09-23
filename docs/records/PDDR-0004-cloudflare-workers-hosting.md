@@ -18,7 +18,7 @@ evidence:
   - "https://github.com/serevy/pddr-greenfield-example/pull/11"
   - docs/evidence/workers-deployment-2026-09-23.md
   - "Maintainer reported the initial Cloudflare Workers deployment completed successfully, 2026-09-23 (private)"
-  - "Maintainer confirmed https://example.serevy.workers.dev/ is publicly reachable without a Zero Trust / Access authentication challenge, 2026-09-23 (private)"
+  - "Maintainer confirmed https://pddr-greenfield-example.serevy.workers.dev/ is publicly reachable without a Zero Trust / Access authentication challenge, 2026-09-23 (private)"
 related:
   - PDDR-0003
 supersedes: []
@@ -77,7 +77,7 @@ maintainerは、API周りを過度に複雑化せずに将来の拡張余地を�
 
 `wrangler.jsonc`で`app/`をWorkers Static Assetsとして配信する最小configurationを追加した。
 
-repository側のprovider-specific configurationはmainへmerge済みで、maintainerからCloudflare Workersへの初回deployment完了と `https://example.serevy.workers.dev/` の公開到達性が確認された。Zero Trust / Accessの認証challengeなしで通常アクセスできることも確認済みである。さらにmaintainer提供のmobile browser screenshotで、公開endpoint上にPocket Garden UIが正常表示されることを確認した。
+repository側のprovider-specific configurationはmainへmerge済みで、maintainerからCloudflare Workersへの初回deployment完了と `https://pddr-greenfield-example.serevy.workers.dev/` の公開到達性が確認された。Zero Trust / Accessの認証challengeなしで通常アクセスできることも確認済みである。さらにmaintainer提供のmobile browser screenshotで、公開endpoint上にPocket Garden UIが正常表示されることを確認した。browser chromeではhostname左側が省略表示されるため、画面上の短縮表示を別hostnameとして扱わない。
 
 Workersへ配信しているのはPhase 1で検証済みのstatic `app/` artifactであり、水やり、browser-local stateの復元、resetは `docs/evidence/bamboo-phase1-validation.md` で検証済みである。
 
@@ -108,7 +108,7 @@ assistant実行環境からは `workers.dev` hostへの外向きアクセス制�
 - [Workers deployment evidence](../evidence/workers-deployment-2026-09-23.md)
 - Maintainer report that the initial Cloudflare Workers deployment completed successfully, 2026-09-23 (private).
 - [main PDDR validation after PR #11](https://github.com/serevy/pddr-greenfield-example/actions/runs/35815995475)
-- Maintainer confirmation that https://example.serevy.workers.dev/ is publicly reachable, 2026-09-23 (private).
+- Maintainer confirmation that https://pddr-greenfield-example.serevy.workers.dev/ is publicly reachable, 2026-09-23 (private).
 
 ## Related records
 
