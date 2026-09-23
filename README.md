@@ -1,6 +1,6 @@
 # PDDR Greenfield Example
 
-新規プロジェクトへ[PDDR Kit v0.1.0](https://github.com/serevy/pddr-kit/releases/tag/v0.1.0)を導入し、その後の継続運用まで示す最小リファレンスです。
+新規プロジェクトへ最初に[PDDR Kit v0.1.0](https://github.com/serevy/pddr-kit/releases/tag/v0.1.0)を導入し、現在はmanaged coreを[v0.2.1](https://github.com/serevy/pddr-kit/releases/tag/v0.2.1)へ更新したうえで、その後の継続運用まで示す最小リファレンスです。
 
 このリポジトリで扱う「Pocket Garden」と、そのProduct判断に使う観測・設定・検証結果はすべて架空です。実在するユーザー調査や製品の主張ではありません。PDDR Kit自体の導入・保守に関する記録は、この公開リポジトリで実際に確認できるEvidenceを使用します。
 
@@ -12,6 +12,7 @@
 - 実際に触れるPocket GardenのBamboo Plot
 - milestone auditから生まれたProcess判断の例
 - checkpointを実施してもroutine workをPDDRへ昇格しない境界
+- read-only signal workflowとtrusted marker writerへ分離したhardened optional checkpoint CI
 - Pull Requestと`main`でPDDRを検証するGitHub Actions
 - Issue / PRとPDDRを使い分ける最小運用
 
@@ -31,9 +32,9 @@
 
 ## 継続運用の例
 
-2026-09-22のmaintenance auditでは、導入済み`.pddr/`管理ファイルがPDDR Kit mainと同一であり、Kit自体のupgradeは不要でした。また、Dependabot導入はroutine maintenanceとしてPDDRへ昇格していません。
+2026-09-22のmaintenance audit時点では、導入済み`.pddr/`管理ファイルが当時のPDDR Kit mainと同一であり、upgradeは不要でした。また、Dependabot導入はroutine maintenanceとしてPDDRへ昇格していません。
 
-一方、PDDR Kitのdogfoodingから得られたmilestone audit guidanceは、このサンプルでも将来の記録漏れを防ぐProcess判断として採用し、`AGENTS.md`へcheckpointを接続してPDDR-0002へ記録しています。
+その後、managed coreはPDDR Kit `v0.2.1`へ更新しました。milestone audit guidanceは`AGENTS.md`へ接続してPDDR-0002へ記録し、さらにhardened optional checkpoint CIを導入しています。Checkpoint CIはread-only signal workflowとtrusted marker writerへ権限分離され、high-signalのpending marker自動追記、completed回収、再実行時のmarker重複なしまでdogfood済みです。
 
 ## Bamboo Plotを触る
 
@@ -64,7 +65,7 @@ npx wrangler@latest dev
 
 Cloudflare Workers BuildsのGitHub integrationを使う場合は、Cloudflare Dashboardの **Workers & Pages → Create application → Import a repository** からこのrepositoryを接続します。
 
-repository側の設定は用意済みですが、Cloudflare account側の接続と初回deploymentは別途必要です。公開URLでの検証が完了するまでは、PDDR-0004の`delivery_status`は`in-progress`です。
+Cloudflare Workersへの初回deploymentは完了しており、公開URLは `https://pddr-greenfield-example.serevy.workers.dev/` です。公開endpoint上で水やり、reload後のbrowser-local state保持、reset / replantまで確認済みで、PDDR-0004の`delivery_status`は`validated`です。
 
 ## 検証する
 
