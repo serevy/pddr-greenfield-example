@@ -71,7 +71,7 @@ h1 {
 }
 
 .garden-ground {
-  --grass-height: 28%;
+  --grass-height: 10%;
 
   position: relative;
   height: 10rem;
