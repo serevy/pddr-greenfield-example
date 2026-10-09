@@ -1,6 +1,6 @@
 # PDDR Greenfield Example
 
-新規プロジェクトへ最初に[PDDR Kit v0.1.0](https://github.com/serevy/pddr-kit/releases/tag/v0.1.0)を導入し、現在はmanaged coreを[v0.2.1](https://github.com/serevy/pddr-kit/releases/tag/v0.2.1)へ更新したうえで、その後の継続運用まで示す最小リファレンスです。
+新規プロジェクトへ最初に[PDDR Kit v0.1.0](https://github.com/serevy/pddr-kit/releases/tag/v0.1.0)を導入し、現在はmanaged coreを[v0.3.0](https://github.com/serevy/pddr-kit/releases/tag/v0.3.0)へ更新したうえで、その後の継続運用まで示す最小リファレンスです。
 
 このリポジトリで扱う「Pocket Garden」と、そのProduct判断に使う観測・設定・検証結果はすべて架空です。実在するユーザー調査や製品の主張ではありません。PDDR Kit自体の導入・保守に関する記録は、この公開リポジトリで実際に確認できるEvidenceを使用します。
 
@@ -35,6 +35,8 @@
 2026-09-22のmaintenance audit時点では、導入済み`.pddr/`管理ファイルが当時のPDDR Kit mainと同一であり、upgradeは不要でした。また、Dependabot導入はroutine maintenanceとしてPDDRへ昇格していません。
 
 その後、managed coreはPDDR Kit `v0.2.1`へ更新しました。milestone audit guidanceは`AGENTS.md`へ接続してPDDR-0002へ記録し、さらにhardened optional checkpoint CIを導入しています。Checkpoint CIはread-only signal workflowとtrusted marker writerへ権限分離され、high-signalのpending marker自動追記、completed回収、再実行時のmarker重複なしまでdogfood済みです。
+
+2026-10-09には、[PR #24](https://github.com/serevy/pddr-greenfield-example/pull/24)でmanaged coreを`v0.3.0`へ更新しました。従来のPDDR記録、独自のAIルール、checkpoint CI、任意Skillは変更していません。
 
 ## Bamboo Plotを触る
 
